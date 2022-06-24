@@ -4,7 +4,7 @@
 require('../configuraciones/conexion.php');
 
 //query
-$query="UPDATE almacen SET nombre='$_POST[nombre]', cantidad_mercados_maxima='$_POST[cantidad_mercados_maxima]', nucleo_administrador = '$_POST[nucleo_administrador]' WHERE numero_almacen = '$_POST[numero_almacen]'";
+$query="delete FROM almacen where numero_almacen='$_POST[d]'";
 $result = mysqli_query($conn, $query) or 
 die(mysqli_error($conn));
  

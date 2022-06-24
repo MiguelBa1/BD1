@@ -9,7 +9,7 @@ $result = mysqli_query($conn, $query) or
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: personas.php");
+    header ("Location: almacen.php");
     
      
  }else{

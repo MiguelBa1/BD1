@@ -21,4 +21,5 @@ CREATE TABLE mercado (
   lugar_almacenamiento int(2) REFERENCES almacen
 ) ENGINE=InnoDB;
 
+INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, NULL, NULL);
 INSERT INTO almacen VALUES(1,"Almacen general", 10, NULL);

@@ -73,8 +73,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Núcleo administrador</label>
-                                <input type="text" name="nucleo_administrador" value=<?=$_GET["nucleo_administrador"];?>
-                                    id="nucleo_administrador" class="form-control">
+
+                                <select name="nucleo_administrador" id="nucleo_administrador" class = "form-control" value = <?=$_GET["nucleo_administrador"];?>>
+                                    <option value="NULL">Ninguno</option>
+                                    <?php
+                                    require('consultar_nF.php');
+                                    if($resultP){
+                                        foreach ($resultP as $fila){
+                                    ?>
+                                            <option value=<?=$fila['codigo'];?>  ><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> - Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <?php
+                                        }
+                                    }
+                        
+                                    ?>
+
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -112,7 +126,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Núcleo administrador</label>
-                                <input type="text" name="nucleo_administrador" id="nucleo_administrador" class="form-control">
+
+                                <select name="nucleo_administrador" id="nucleo_administrador" class = "form-control">
+                                    <option value="NULL">Ninguno</option>
+                                    <?php
+                                    require('consultar_nF.php');
+                                    if($resultP){
+                                        foreach ($resultP as $fila){
+                                    ?>
+                                            <option value=<?=$fila['codigo'];?>  ><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> - Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <?php
+                                        }
+                                    }
+                        
+                                    ?>
+
+                                </select>
+
                             </div>
 
                             <div class="form-group">
@@ -165,7 +195,7 @@
                                     <input type="text" name="numero_almacen" value=<?=$fila['numero_almacen'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
                                     <input type="text" name="cantidad_mercados_maxima" value='<?=$fila['cantidad_mercados_maxima'];?>' hidden>
-                                    <input type="text" name="nucleo_administrador" value=<?=$fila['nucleo_administrador'];?> hidden>
+                                    <input type="text" name="nucleo_administrador" hidden value=<?php if(is_null($fila['nucleo_administrador'])){"NULL";}?> >
 
                                     <button class="btn btn-primary" title="editar" type="submit"><i
                                             class="far fa-edit"></i></button>
