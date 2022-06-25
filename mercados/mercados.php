@@ -37,10 +37,6 @@
             <a class="nav-link" href="../nucleo/nucleo.php">Nucleo Familiar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../almacen/almacen.php">Almacen</a>
-        </li>
-
-        <li class="nav-item">
             <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>
         </li>
         <li class="nav-item">
