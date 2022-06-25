@@ -24,24 +24,31 @@
 <body>
     <!--Barra de navegacion-->
     <ul class="nav">
-        <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">Inicio</a>
+        <li class="nav-item">
+            <a class="nav-link" href="../index.html">inicio</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../personas/personas.php">Personas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="../mercados/mercados.php">Mercados</a>
         </li>
-        <li class="nav">
-            <a class="nav-link" href="../facturas/facturas.php">Facturas</a>
+        <li class="nav-item">
+            <a class="nav-link " href="../almacen/almacen.php">Almacen</a>
         </li>
-        <li class="nav-item nav-pills">
-            <a class="nav-link active" href="busquedas.php">Busquedas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="../nucleo/nucleo.php">Nucleo Familiar</a>
+        </li>
+
+        <li class="nav-pills">
+            <a class="nav-link active" href="../busquedas/busquedas.php">Busquedas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../busquedas/busquedas.php">Consultas</a>
         </li>
     </ul>
     <div class="container">
         <div class="row my-2">
             <div class="col-6">
                 <p>Para realizar una busqueda de facturas primero selecciona y llena los parametros de la busqueda.</p>
-                <form action="buscar.php" target="_blank"  method="POST">
+                <form action="buscar.php" target="_blank" method="POST">
                     <div class="form-group">
                         <label for="">Parametros:</label>
                         <div class="form-check">
@@ -61,12 +68,12 @@
                     </div>
                     <div class="input-group ">
                         <input type="text" name="identificacion" id="identificacion" class="form-control">
-                        <button class="btn  btn-primary"  title="Buscar" type="submit">
+                        <button class="btn  btn-primary" title="Buscar" type="submit">
                             <i class="fas fa-search-plus mx-0 my-0"> </i></button>
                     </div>
                 </form>
             </div>
-            
+
         </div>
     </div>
 

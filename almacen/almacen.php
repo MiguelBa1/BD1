@@ -25,21 +25,24 @@
 
     <!--Barra de navegación-->
     <ul class="nav">
-        <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">inicio</a>
-        </li>
-        <li class="nav nav-item">
-            <a class="nav-link active" href="../personas/personas.php">Personas</a>
-        </li>
-
         <li class="nav-item">
-            <a class="nav-link" href="../facturas/facturas.php">Facturas</a>
+            <a class="nav-link" href="../index.html">inicio</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../busquedas/busquedas.php">Busquedas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="../mercados/mercados.php">Mercados</a>
         </li>
         <li class="nav-pills">
             <a class="nav-link active" href="../almacen/almacen.php">Almacen</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../nucleo/nucleo.php">Nucleo Familiar</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../busquedas/busquedas.php">Consultas</a>
         </li>
     </ul>
 
@@ -68,20 +71,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Cantidad máxima de mercados</label>
-                                <input type="text" name="cantidad_mercados_maxima" value='<?=$_GET["cantidad_mercados_maxima"];?>'
-                                    id="cantidad_mercados_maxima" class="form-control">
+                                <input type="text" name="cantidad_mercados_maxima"
+                                    value='<?=$_GET["cantidad_mercados_maxima"];?>' id="cantidad_mercados_maxima"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Núcleo administrador</label>
 
-                                <select name="nucleo_administrador" id="nucleo_administrador" class = "form-control" value = <?=$_GET["nucleo_administrador"];?>>
+                                <select name="nucleo_administrador" id="nucleo_administrador" class="form-control"
+                                    value=<?=$_GET["nucleo_administrador"];?>>
                                     <option value="NULL">Ninguno</option>
                                     <?php
                                     require('consultar_nF.php');
                                     if($resultP){
                                         foreach ($resultP as $fila){
                                     ?>
-                                            <option value=<?=$fila['codigo'];?>  ><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> - Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <option value=<?=$fila['codigo'];?>><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> -
+                                            Celular: </b><?=$fila['numero_celular'];?></option>
                                     <?php
                                         }
                                     }
@@ -122,19 +128,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Cantidad máxima de mercados</label>
-                                <input type="text" name="cantidad_mercados_maxima" id="cantidad_mercados_maxima" class="form-control">
+                                <input type="text" name="cantidad_mercados_maxima" id="cantidad_mercados_maxima"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Núcleo administrador</label>
 
-                                <select name="nucleo_administrador" id="nucleo_administrador" class = "form-control">
+                                <select name="nucleo_administrador" id="nucleo_administrador" class="form-control">
                                     <option value="NULL">Ninguno</option>
                                     <?php
                                     require('consultar_nF.php');
                                     if($resultP){
                                         foreach ($resultP as $fila){
                                     ?>
-                                            <option value=<?=$fila['codigo'];?>  ><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> - Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <option value=<?=$fila['codigo'];?>><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> -
+                                            Celular: </b><?=$fila['numero_celular'];?></option>
                                     <?php
                                         }
                                     }
@@ -194,8 +202,10 @@
 
                                     <input type="text" name="numero_almacen" value=<?=$fila['numero_almacen'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="cantidad_mercados_maxima" value='<?=$fila['cantidad_mercados_maxima'];?>' hidden>
-                                    <input type="text" name="nucleo_administrador" hidden value=<?php if(is_null($fila['nucleo_administrador'])){"NULL";}?> >
+                                    <input type="text" name="cantidad_mercados_maxima"
+                                        value='<?=$fila['cantidad_mercados_maxima'];?>' hidden>
+                                    <input type="text" name="nucleo_administrador" hidden
+                                        value=<?php if(is_null($fila['nucleo_administrador'])){"NULL";}?>>
 
                                     <button class="btn btn-primary" title="editar" type="submit"><i
                                             class="far fa-edit"></i></button>

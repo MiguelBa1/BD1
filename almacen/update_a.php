@@ -13,7 +13,7 @@ if($result){
     
      
  }else{
-     echo "Ha ocurrido un error al eliminar el almacen";
+     echo "Ha ocurrido un error al actualizar el almacen";
  }
  
 mysqli_close($conn);
