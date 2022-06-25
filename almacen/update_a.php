@@ -9,11 +9,11 @@ $result = mysqli_query($conn, $query) or
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: personas.php");
+    header ("Location: almacen.php");
     
      
  }else{
-     echo "Ha ocurrido un error al Eliminar  la persona";
+     echo "Ha ocurrido un error al actualizar el almacen";
  }
  
 mysqli_close($conn);
