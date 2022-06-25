@@ -17,7 +17,7 @@ try {
     $result = mysqli_query($conn, $query) or
         die(mysqli_error($conn));
 } catch (\Throwable $th) {
-    echo "Ha ocurrido un error al Actualizar persona";
+    echo "Ha ocurrido un error al actualizar el mercado";
 }
 
 if ($result) {
