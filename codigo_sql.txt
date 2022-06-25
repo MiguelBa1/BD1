@@ -1,5 +1,5 @@
 CREATE TABLE nucleo_familiar (
-  codigo int2) PRIMARY KEY,
+  codigo int(2) PRIMARY KEY,
   numero_celular varchar(10) NOT NULL,
   dinero int(8) NOT NULL,
   fecha_de_matrimonio date DEFAULT NULL,
@@ -10,16 +10,16 @@ CREATE TABLE almacen (
   numero_almacen int(2) PRIMARY KEY,
   nombre varchar(20) NOT NULL,
   cantidad_mercados_maxima int(2) NOT NULL,
-  nucleo_administrador int(2) UNIQUE REFERENCES nucleo_familiar
+  nucleo_administrador int(2) UNIQUE DEFAULT NULL REFERENCES nucleo_familiar(codigo) 
 ) ENGINE=InnoDB;
 
 CREATE TABLE mercado (
   codigo int(2) PRIMARY KEY,
   fecha_de_compra date NOT NULL,
   valor_total int(11) NOT NULL,
-  codigo_nucleo_comprador int(2) REFERENCES nucleo_familiar,
-  lugar_almacenamiento int(2) REFERENCES almacen
+  codigo_nucleo_comprador int(2) DEFAULT NULL REFERENCES nucleo_familiar(codigo),
+  lugar_almacenamiento int(2) DEFAULT NULL REFERENCES almacen(numero_almacen)
 ) ENGINE=InnoDB;
 
-INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, NULL, NULL);
+INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, DEFAULT, DEFAULT);
 INSERT INTO almacen VALUES(1,"Almacen general", 10, NULL);
