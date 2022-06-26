@@ -75,6 +75,7 @@
                                 <div class="form-group">
                                     <label for="nucleo_administrador_edit">Núcleo administrador</label>
                                     <select id="nucleo_administrador_edit" name="nucleo_administrador" class="form-control" value=<?= $_GET["nucleo_administrador"]; ?>>
+                                        <option value='<?= $_GET["nucleo_administrador"]; ?>' selected hidden><?= $_GET["nucleo_administrador"]; ?></option>
                                         <option value="NULL">Ninguno</option>
                                         <?php
                                         require('consultar_nF.php');
@@ -191,12 +192,10 @@
                                     <td class="mx-0 pr-2">
                                         <form action="almacen.php" method="GET">
 
-                                            <input type="text" name="numero_almacen" value=<?= $fila['numero_almacen']; ?> hidden>
+                                            <input type="text" name="numero_almacen" value='<?= $fila['numero_almacen']; ?>' hidden>
                                             <input type="text" name="nombre" value='<?= $fila['nombre']; ?>' hidden>
                                             <input type="number" name="cantidad_mercados_maxima" value='<?= $fila['cantidad_mercados_maxima']; ?>' hidden>
-                                            <input type="text" name="nucleo_administrador" hidden value=<?php if (is_null($fila['nucleo_administrador'])) {
-                                                                                                            "NULL";
-                                                                                                        } ?>>
+                                            <input type="text" name="nucleo_administrador" hidden value=<?= $fila['nucleo_administrador']?>>
 
                                             <button class="btn btn-primary" title="editar" type="submit"><i class="far fa-edit"></i></button>
                                         </form>
