@@ -5,7 +5,7 @@ require('../configuraciones/conexion.php');
 
 
 
-if($_POST["tipo"] === "N"){
+if($_POST["casados"] === "No"){
 	$query="INSERT INTO nucleo_familiar(`codigo`,`numero_celular`,`dinero`,`fecha_de_matrimonio`, `acta_de_matrimonio`)
 	VALUES('$_POST[codigo]','$_POST[numero_celular]','$_POST[dinero]',NULL, NULL)";
 }
