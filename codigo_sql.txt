@@ -29,7 +29,7 @@ CREATE TABLE mercado (
 ) ENGINE=InnoDB;
 
 INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, DEFAULT, DEFAULT);
-INSERT INTO almacen VALUES(1,"Almacen general", 10, NULL);
+INSERT INTO almacen VALUES(1,"Almacén general", 10, NULL);
 
 SELECT codigo, valor_total
 FROM mercado m
