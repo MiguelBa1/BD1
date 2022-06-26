@@ -12,8 +12,8 @@ if ($_POST["valor_total"] < 0){
 	echo "El valor total debe ser positivo <br>";
 	// header("Location: mercados.php");
 }
-// echo time() > new DateTime($_POST["fecha_compra"]);
-if (new DateTime($_POST["fecha_compra"]) > new DateTime("today")){
+// echo time() > new DateTime($_POST["fecha_de_compra"]);
+if (new DateTime($_POST["fecha_de_compra"]) > new DateTime("today")){
 	echo "Fecha de compra debe ser anterior a la fecha actual <br>";
 	// header("Location: mercados.php");
 }
@@ -21,19 +21,19 @@ if (new DateTime($_POST["fecha_compra"]) > new DateTime("today")){
 
 if ($_POST["codigo_nucleo"] == "none" && $_POST["codigo_almacen"] == "none") {
 	$query = "INSERT INTO mercado(`codigo`, `fecha_de_compra`, `valor_total`, `codigo_nucleo_comprador`, `lugar_almacenamiento`) 
-	VALUES('$_POST[codigo_mercado]','$_POST[fecha_compra]','$_POST[valor_total]', NULL,NULL)";
+	VALUES('$_POST[codigo_mercado]','$_POST[fecha_de_compra]','$_POST[valor_total]', NULL,NULL)";
 
 } elseif ($_POST["codigo_almacen"] == "none") {
 	$query = "INSERT INTO mercado(`codigo`, `fecha_de_compra`, `valor_total`, `codigo_nucleo_comprador`, `lugar_almacenamiento`) 
-	VALUES('$_POST[codigo_mercado]','$_POST[fecha_compra]','$_POST[valor_total]','$_POST[codigo_nucleo]', NULL)";
+	VALUES('$_POST[codigo_mercado]','$_POST[fecha_de_compra]','$_POST[valor_total]','$_POST[codigo_nucleo]', NULL)";
 
 } elseif ($_POST["codigo_nucleo"] == "none") {
 	$query = "INSERT INTO mercado(`codigo`, `fecha_de_compra`, `valor_total`, `codigo_nucleo_comprador`, `lugar_almacenamiento`) 
-	VALUES('$_POST[codigo_mercado]','$_POST[fecha_compra]','$_POST[valor_total]', NULL,'$_POST[codigo_almacen]')";
+	VALUES('$_POST[codigo_mercado]','$_POST[fecha_de_compra]','$_POST[valor_total]', NULL,'$_POST[codigo_almacen]')";
 
 } else {
 	$query = "INSERT INTO mercado(`codigo`, `fecha_de_compra`, `valor_total`, `codigo_nucleo_comprador`, `lugar_almacenamiento`) 
-	VALUES('$_POST[codigo_mercado]','$_POST[fecha_compra]','$_POST[valor_total]','$_POST[codigo_nucleo]','$_POST[codigo_almacen]')";
+	VALUES('$_POST[codigo_mercado]','$_POST[fecha_de_compra]','$_POST[valor_total]','$_POST[codigo_nucleo]','$_POST[codigo_almacen]')";
 }
 
 try {
@@ -41,5 +41,5 @@ try {
 	header ("Location: mercados.php");
 } catch (\Throwable $th) {
 	echo "Ha ocurrido un error al crear el mercado <br>";
-	echo '<a href="mercados.php" >Regresar</a>';
+	echo '<a href="mercados.php">Regresar</a>';
 }

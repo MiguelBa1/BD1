@@ -61,9 +61,9 @@
                                     <label for="codigo">Código de mercado</label>
                                     <input type="text" readonly name="codigo" value=<?= $_GET["codigo"]; ?> id="codigo" class="form-control">
                                 </div>
-                                <div name="taskOption" class="from-group">
+                                <div name="taskOption" class="form-group">
                                     <label for="codigo_nucleo">Codigo del nucleo familiar</label>
-                                    <select name="codigo_nucleo" id="codigo-nucleo">
+                                    <select name="codigo_nucleo" id="codigo-nucleo" class="form-control">
                                         <option value='<?=$_GET["codigo_nucleo"];?>' selected hidden><?=$_GET["codigo_nucleo"];?></option>
                                         <option value="none">Ninguno</option>
                                         <?php
@@ -78,9 +78,9 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div name="taskOption" class="from-group">
+                                <div name="taskOption" class="form-group">
                                     <label for="codigo_almacen">Codigo del almacen</label>
-                                    <select name="codigo_almacen" id="codigo-almacen">
+                                    <select name="codigo_almacen" id="codigo-almacen" class="form-control">
                                         <option value='<?=$_GET["codigo_almacen"];?>' selected hidden><?=$_GET["codigo_almacen"];?></option>
                                         <option value="none">Ninguno</option>
                                         <?php
@@ -96,8 +96,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha_compra">Fecha de compra</label>
-                                    <input type="date" name="fecha_compra" id="fecha_compra" class="form-control" required>
+                                    <label for="fecha_de_compra">Fecha de compra <?=$_GET["fecha_de_compra"];?></label>
+                                    <input type="date" name="fecha_de_compra" id="fecha_de_compra" value='<?=$_GET["fecha_de_compra"];?>' class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="valor_total">Valor total</label>
@@ -129,9 +129,9 @@
                                     <label for="cedula">Codigo del mercado</label>
                                     <input type="text" name="codigo_mercado" id="codigo_mercado" class="form-control" required>
                                 </div>
-                                <div name="taskOption" class="from-group">
+                                <div name="taskOption" class="form-group">
                                     <label for="codigo-nucleo">Codigo del nucleo familiar</label>
-                                    <select name="codigo_nucleo" id="codigo-nucleo">
+                                    <select name="codigo_nucleo" id="codigo-nucleo" class="form-control">
                                         <option value="none" selected hidden>Selecciona una opcion</option>
                                         <option value="none">Ninguno</option>
                                         <?php
@@ -146,9 +146,9 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div name="taskOption" class="from-group">
+                                <div name="taskOption" class="form-group">
                                     <label for="codigo-almacen">Codigo del almacen</label>
-                                    <select name="codigo_almacen" id="codigo-almacen">
+                                    <select name="codigo_almacen" id="codigo-almacen" class="form-control">
                                         <option value="none" selected hidden>Selecciona una opcion</option>
                                         <option value="none">Ninguno</option>
                                         <?php
@@ -164,8 +164,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fecha_compra">Fecha de compra</label>
-                                    <input type="date" name="fecha_compra" id="fecha_compra" class="form-control">
+                                    <label for="fecha_de_compra">Fecha de compra</label>
+                                    <input type="date" name="fecha_de_compra" id="fecha_de_compra" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="valor_total">Valor total</label>

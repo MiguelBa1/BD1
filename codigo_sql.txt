@@ -21,7 +21,7 @@ CREATE TABLE almacen (
 
 CREATE TABLE mercado (
   codigo int(2) PRIMARY KEY,
-  fecha_de_compra date NOT NULL,
+  fecha_de_compra DATE NOT NULL,
   valor_total int(11) NOT NULL,
   codigo_nucleo_comprador int(2) REFERENCES nucleo_familiar,
   lugar_almacenamiento int(2) REFERENCES almacen
@@ -30,3 +30,38 @@ CREATE TABLE mercado (
 
 INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, DEFAULT, DEFAULT);
 INSERT INTO almacen VALUES(1,"Almacen general", 10, NULL);
+
+SELECT codigo, valor_total
+FROM mercado m
+WHERE valor_total > (SELECT dinero
+				FROM nucleo_familiar n
+				WHERE n.codigo = m.codigo_nucleo_comprador) AND codigo_nucleo_comprador = (SELECT nucleo_administrador
+																	FROM almacen a
+																	WHERE a.numero_almacen = m.lugar_almacenamiento);   
+
+SELECT numero_almacen, nombre FROM almacen 
+	WHERE numero_almacen IN 
+    			(SELECT lugar_almacenamiento
+					FROM mercado
+					GROUP BY lugar_almacenamiento
+					HAVING COUNT(*) > 3 AND SUM(valor_total) > 1000
+                )
+         		AND nucleo_administrador NOT IN (SELECT codigo_nucleo_comprador FROM mercado WHERE codigo_nucleo_comprador IS NOT NULL)
+                AND nucleo_administrador IS NOT NULL;
+
+SELECT numero_almacen, cantidad_mercados_maxima 
+	FROM almacen 
+    WHERE numero_almacen IN (SELECT lugar_almacenamiento 
+                             FROM mercado 
+                             WHERE fecha_de_compra BETWEEN DATE("2022-06-19") AND DATE("2022-06-25") 
+                             GROUP BY lugar_almacenamiento
+                             HAVING COUNT(*) = 3
+                            );
+                            
+SELECT codigo, numero_celular 
+	FROM nucleo_familiar
+    WHERE codigo IN (
+        SELECT codigo_nucleo_comprador FROM mercado
+        GROUP BY codigo_nucleo_comprador
+        HAVING COUNT(*) BETWEEN 2 AND 4
+    );
