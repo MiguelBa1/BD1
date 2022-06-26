@@ -16,15 +16,15 @@ try {
     }
     $result = mysqli_query($conn, $query) or
         die(mysqli_error($conn));
+
+    if ($result) {
+        header("Location: mercados.php");
+    }
+
 } catch (\Throwable $th) {
-    echo "Ha ocurrido un error al actualizar el mercado";
+    echo "Ha ocurrido un error al actualizar el mercado <br>";
+    echo $th;
 }
 
-if ($result) {
-    header("Location: mercados.php");
-}
-mysqli_close($conn);
-
-
-
+    mysqli_close($conn);
 ?>

@@ -1,32 +1,36 @@
 CREATE TABLE nucleo_familiar (
-  codigo int(2) PRIMARY KEY,
-  numero_celular varchar(10) NOT NULL,
-  dinero int(8) NOT NULL,
-  fecha_de_matrimonio date DEFAULT NULL,
-  acta_de_matrimonio varchar(50) DEFAULT NULL,
-  CHECK ((fecha_de_matrimonio IS NOT NULL AND acta_de_matrimonio IS NOT NULL)
-        OR
-        (fecha_de_matrimonio IS NULL AND acta_de_matrimonio IS NULL)
-         AND (fecha_de_matrimonio <= CURRENT_DATE)
-         AND (dinero > 0)
-));
+	codigo INT(6) PRIMARY KEY,
+	numero_celular VARCHAR(10) NOT NULL,
+	dinero INT(8) NOT NULL,
+	fecha_de_matrimonio DATE,
+	acta_de_matrimonio VARCHAR(50),
+  	CHECK(
+        ((fecha_de_matrimonio IS NOT NULL AND acta_de_matrimonio IS NOT NULL) OR (fecha_de_matrimonio IS NULL AND acta_de_matrimonio IS NULL))
+        AND (fecha_de_matrimonio <= CURRENT_DATE)
+        AND (dinero > 0)
+        AND (fecha_de_matrimonio <= CURRENT_DATE)
+    )
+);
 
 CREATE TABLE almacen (
-  numero_almacen int(2) PRIMARY KEY,
-  nombre varchar(20) NOT NULL,
-  cantidad_mercados_maxima int(2) NOT NULL,
-  nucleo_administrador int(2) UNIQUE,
-  FOREIGN KEY nucleo_administrador  REFERENCES nucleo_familiar(codigo)
-) ENGINE=InnoDB;
+	numero_almacen INT(2) PRIMARY KEY,
+	nombre VARCHAR(20) NOT NULL,
+	cantidad_mercados_maxima INT(2) NOT NULL,
+	nucleo_administrador INT(2) UNIQUE,
+	FOREIGN KEY (nucleo_administrador) REFERENCES nucleo_familiar(codigo),
+  CHECK (cantidad_mercados_maxima>0)
+);
 
 CREATE TABLE mercado (
-  codigo int(2) PRIMARY KEY,
-  fecha_de_compra DATE NOT NULL,
-  valor_total int(11) NOT NULL,
-  codigo_nucleo_comprador int(2) REFERENCES nucleo_familiar,
-  lugar_almacenamiento int(2) REFERENCES almacen
-  CHECK(fecha_de_compra < CURRENT_DATE AND valor_total >= 0),
-) ENGINE=InnoDB;
+	codigo INT(6) PRIMARY KEY,
+	fecha_de_compra DATE NOT NULL,
+	valor_total INT(11) NOT NULL,
+	codigo_nucleo_comprador INT(2),
+	lugar_almacenamiento INT(2),
+	CHECK(fecha_de_compra < CURRENT_DATE AND valor_total >= 0),
+	FOREIGN KEY (codigo_nucleo_comprador) REFERENCES nucleo_familiar(codigo),
+	FOREIGN KEY (lugar_almacenamiento) REFERENCES almacen(numero_almacen)
+	)
 
 INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, NULL, NULL);
 INSERT INTO almacen VALUES(1,"Almacen general", 10, NULL);
@@ -39,15 +43,16 @@ WHERE valor_total > (SELECT dinero
 																	FROM almacen a
 																	WHERE a.numero_almacen = m.lugar_almacenamiento);   
 
-SELECT numero_almacen, nombre FROM almacen 
+SELECT numero_almacen, nombre FROM almacen a 
 	WHERE numero_almacen IN 
     			(SELECT lugar_almacenamiento
-					FROM mercado
+					FROM mercado m
+          WHERE a.numero_almacen = m.lugar_almacenamiento
 					GROUP BY lugar_almacenamiento
-					HAVING COUNT(*) > 3 AND SUM(valor_total) > 1000
+					HAVING COUNT(*) >= 3 AND SUM(valor_total) > 1000
                 )
          		AND nucleo_administrador NOT IN (SELECT codigo_nucleo_comprador FROM mercado WHERE codigo_nucleo_comprador IS NOT NULL)
-                AND nucleo_administrador IS NOT NULL;
+            AND nucleo_administrador IS NOT NULL;
 
 SELECT numero_almacen, cantidad_mercados_maxima 
 	FROM almacen 

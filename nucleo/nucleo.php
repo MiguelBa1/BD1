@@ -44,7 +44,7 @@
             <a class="nav-link" href="../busquedas/busquedas.php">Busquedas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../busquedas/busquedas.php">Consultas</a>
+            <a class="nav-link" href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
 
@@ -62,7 +62,7 @@
                         <form action="update_nF.php" , class="form-group" method="post">
                             <div class="form-group">
                                 <label for="codigo_edit">Codigo<span style="color: red;">*</span></label>
-                                <input type="text" name="codigo" id="codigo_edit" class="form-control" readonly
+                                <input type="number" name="codigo" id="codigo_edit" class="form-control" readonly
                                     value=<?= $_GET["codigo"]; ?>>
                             </div>
                             <div class="form-group">
@@ -104,7 +104,7 @@
                                 <div>
                                     <label for="acta_de_matrimonio">Link acta de matrimonio</label>
                                     <input type="text" name="acta_de_matrimonio" id="acta_de_matrimonio"
-                                        class="form-control" required>
+                                        class="form-control">
                                 </div>
                             </div>
 
@@ -129,9 +129,6 @@
                             <?php
                                     }
                                     ?>
-
-
-
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Guardar">
                                 <a href="nucleo.php" class="btn btn-danger">Descartar</a>
@@ -153,7 +150,7 @@
                         <form action="insert_nF.php" , class="form-group" method="post">
                             <div>
                                 <label for="codigo">Código<span style="color: red;">*</span></label>
-                                <input type="text" name="codigo" id="codigo" class="form-control" required>
+                                <input type="number" name="codigo" id="codigo" class="form-control" required>
                             </div>
                             <div>
                                 <label for="numero_celular">Número de celular<span style="color: red;">*</span></label>
@@ -187,7 +184,7 @@
                                 <div>
                                     <label for="acta_de_matrimonio">Link acta de matrimonio</label>
                                     <input type="text" name="acta_de_matrimonio" id="acta_de_matrimonio"
-                                        class="form-control" required>
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -61,8 +61,8 @@
                             <!--formulario para insertar un almacen mediante el metodo post-->
                             <form action="update_a.php" class="form-group" method="post">
                                 <div class="form-group">
-                                    <label for="numero_almacen_edit">Código de almacen<span style="color: red;">*</span></label>
-                                    <input type="text" readonly name="numero_almacen" value=<?= $_GET["numero_almacen"]; ?> id="numero_almacen_edit" class="form-control" required>
+                                    <label for="numero_almacen_edit">Número de almacén<span style="color: red;">*</span></label>
+                                    <input type="number" readonly name="numero_almacen" value=<?= $_GET["numero_almacen"]; ?> id="numero_almacen_edit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre_edit">Nombre<span style="color: red;">*</span></label>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad_mercados_maxima_edit">Cantidad máxima de mercados<span style="color: red;">*</span></label>
-                                    <input type="number" name="cantidad_mercados_maxima" value='<?= $_GET["cantidad_mercados_maxima"]; ?>' id="cantidad_mercados_maxima_edit" class="form-control" required>
+                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima" value='<?= $_GET["cantidad_mercados_maxima"]; ?>' id="cantidad_mercados_maxima_edit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nucleo_administrador_edit">Núcleo administrador</label>
@@ -114,8 +114,8 @@
                             <!--formulario para insertar un almacen mediante el metodo post-->
                             <form action="insert_a.php" class="form-group" method="post">
                                 <div class="form-group">
-                                    <label for="numero_almacen">Código de almacen<span style="color: red;">*</span></label>
-                                    <input type="text" name="numero_almacen" class="form-control" required>
+                                    <label for="numero_almacen">Número de almacén<span style="color: red;">*</span></label>
+                                    <input type="number" name="numero_almacen" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombre<span style="color: red;">*</span></label>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad_mercados_maxima">Cantidad máxima de mercados<span style="color: red;">*</span></label>
-                                    <input type="number" name="cantidad_mercados_maxima" class="form-control" required>
+                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima" value='<?= $_GET["cantidad_mercados_maxima"]; ?>' id="cantidad_mercados_maxima_edit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nucleo_administrador">Núcleo administrador</label>

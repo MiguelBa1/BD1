@@ -21,15 +21,16 @@
         <?php
         require('../configuraciones/conexion.php');
         if ($_POST["consultas"] === "Primera") {
-            $query = "SELECT numero_almacen, nombre FROM almacen 
-            WHERE numero_almacen IN 
-                        (SELECT lugar_almacenamiento
-                            FROM mercado
-                            GROUP BY lugar_almacenamiento
-                            HAVING COUNT(*) >= 3 AND SUM(valor_total) > 1000
-                        )
-                         AND nucleo_administrador NOT IN (SELECT codigo_nucleo_comprador FROM mercado WHERE codigo_nucleo_comprador IS NOT NULL)
-                        AND nucleo_administrador IS NOT NULL";
+            $query = "SELECT numero_almacen, nombre FROM almacen a 
+	WHERE numero_almacen IN 
+    			(SELECT lugar_almacenamiento
+					FROM mercado m
+					GROUP BY lugar_almacenamiento
+					HAVING COUNT(*) >= 3 AND SUM(valor_total) > 1000
+                )
+         		AND nucleo_administrador NOT IN (SELECT codigo_nucleo_comprador FROM mercado WHERE codigo_nucleo_comprador IS NOT NULL)
+            AND nucleo_administrador IS NOT NULL;
+";
             $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
             if ($result) {
         ?>
