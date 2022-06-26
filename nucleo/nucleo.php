@@ -70,6 +70,58 @@
                                     value=<?=$_GET["dinero"];?>>
                             </div>
 
+
+                            
+                            <?php
+                                    if($_GET["fecha_de_matrimonio"] == ""){
+                                        ?>
+                                        <div name="taskOption" class="form-group">
+                                <label for="exampleFormControlSelect2">Casados?</label>
+                                <select class="form-control" onchange="cambioTipo(this)" name="tipo"
+                                    id="exampleFormControlSelect2">
+                                    <option value="Y">Si</option>
+                                    <option value="N">No</option>
+                                </select>
+                            </div>
+                            <div id="casados" class="form-group">
+                                <div>
+                                    <label for="">Fecha de matrimonio</label>
+                                    <input type="date" name="fecha_de_matrimonio" id="fecha_de_matrimonio"
+                                        class="form-control">
+                                </div>
+                                <div>
+                                    <label for="">Link acta de matrimonio</label>
+                                    <input type="text" name="acta_de_matrimonio" id="acta_de_matrimonio"
+                                        class="form-control">
+                                </div>
+                            </div>
+
+                            <script>
+                            function cambioTipo(select) {
+                                if (select.value === "Y") {
+
+                                    $("#casados").show();
+                                }
+                                if (select.value === "N") {
+                                    $("#casados").hide();
+                                }
+                            }
+                            </script>
+
+                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                                crossorigin="anonymous"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+                                crossorigin="anonymous"></script>
+
+
+                                        <?php
+                                    }
+                                    ?>
+
+                            
+
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Guardar">
                                 <a href="nucleo.php" class="btn btn-danger">Descartar</a>
@@ -192,6 +244,7 @@
                                     <input type="text" name="numero_celular" value='<?=$fila['numero_celular'];?>'
                                         hidden>
                                     <input type="text" name="dinero" value='<?=$fila['dinero'];?>' hidden>
+
                                     <input type="text" name="fecha_de_matrimonio" hidden
                                         value='<?=$fila['fecha_de_matrimonio'];?>'>
                                     <input type="text" name="acta_de_matrimonio" hidden

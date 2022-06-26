@@ -54,7 +54,7 @@
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Editar Persona
+                        Editar Almacen
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar un almacen mediante el metodo post-->
@@ -86,8 +86,7 @@
                                     if($resultP){
                                         foreach ($resultP as $fila){
                                     ?>
-                                    <option value=<?=$fila['codigo'];?>><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> -
-                                            Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <option value=<?=$fila['codigo'];?>><?=$fila['codigo'];?></option>
                                     <?php
                                         }
                                     }
@@ -113,7 +112,7 @@
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Insertar Persona
+                        Insertar Almacen
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar un almacen mediante el metodo post-->
@@ -141,8 +140,7 @@
                                     if($resultP){
                                         foreach ($resultP as $fila){
                                     ?>
-                                    <option value=<?=$fila['codigo'];?>><b>Código Núcleo:</b> <?=$fila['codigo'];?><b> -
-                                            Celular: </b><?=$fila['numero_celular'];?></option>
+                                    <option value=<?=$fila['codigo'];?>><?=$fila['codigo'];?></option>
                                     <?php
                                         }
                                     }
@@ -169,7 +167,7 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Codigo Almacen</th>
+                            <th scope="col">Numero Almacen</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Cantidad maxima mercados</th>
                             <th scope="col">Nucleo administrador</th>
@@ -202,10 +200,8 @@
 
                                     <input type="text" name="numero_almacen" value=<?=$fila['numero_almacen'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="cantidad_mercados_maxima"
-                                        value='<?=$fila['cantidad_mercados_maxima'];?>' hidden>
-                                    <input type="text" name="nucleo_administrador" hidden
-                                        value=<?php if(is_null($fila['nucleo_administrador'])){"NULL";}?>>
+                                    <input type="text" name="cantidad_mercados_maxima" value='<?=$fila['cantidad_mercados_maxima'];?>' hidden>
+                                    <input type="text" name="nucleo_administrador" hidden value= '<?=$fila['nucleo_administrador'];?>'>
 
                                     <button class="btn btn-primary" title="editar" type="submit"><i
                                             class="far fa-edit"></i></button>
