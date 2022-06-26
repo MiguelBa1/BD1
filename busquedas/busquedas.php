@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--titrulo de la pagina-->
-    <title>inicio</title>
+    <title>Inicio</title>
     <!--CDN de boostraps: Libreria de estilos SCSS y CSS para darle unas buena apariencia a la aplicacion
         para mas informacion buscar documentacion de boostraps en: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -25,16 +25,16 @@
     <!--Barra de navegacion-->
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="../index.html">inicio</a>
+            <a class="nav-link" href="../index.html">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../mercados/mercados.php">Mercados</a>
+            <a class="nav-link" href="../mercados/mercados.php">Mercado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="../almacen/almacen.php">Almacen</a>
+            <a class="nav-link " href="../almacen/almacen.php">Almacén</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../nucleo/nucleo.php">Nucleo Familiar</a>
+            <a class="nav-link" href="../nucleo/nucleo.php">Núcleo Familiar</a>
         </li>
 
         <li class="nav-pills">
@@ -62,7 +62,7 @@
                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
                                 value="factura">
                             <label class="form-check-label" for="exampleRadios2">
-                                Codigo de la Factura
+                                Código de la Factura
                             </label>
                         </div>
                     </div>
