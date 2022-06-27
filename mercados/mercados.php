@@ -65,7 +65,19 @@
                                 <div name="taskOption" class="form-group">
                                     <label for="codigo_nucleo">Código del núcleo familiar</label>
                                     <select name="codigo_nucleo" id="codigo-nucleo" class="form-control">
-                                        <option value='<?= $_GET["codigo_nucleo"]; ?>' selected hidden><?= $_GET["codigo_nucleo"]; ?></option>
+                                        <option value='<?
+                                         if ($_GET["codigo_nucleo"]) {
+                                            echo $_GET["codigo_nucleo"]; 
+                                         } else {
+                                            echo "none";
+                                         }
+                                        ?>' selected hidden><?php
+                                         if ($_GET["codigo_nucleo"]) {
+                                            echo $_GET["codigo_nucleo"]; 
+                                         } else {
+                                            echo "Seleccione una opcion";
+                                         }
+                                        ?></option>
                                         <option value="none">Ninguno</option>
                                         <?php
                                         require('select_n.php');
@@ -82,7 +94,19 @@
                                 <div name="taskOption" class="form-group">
                                     <label for="codigo_almacen">Número de almacén</label>
                                     <select name="codigo_almacen" id="codigo-almacen" class="form-control">
-                                        <option value='<?= $_GET["codigo_almacen"]; ?>' selected hidden><?= $_GET["codigo_almacen"]; ?></option>
+                                        <option value='<?
+                                         if ($_GET["codigo_nucleo"]) {
+                                            echo $_GET["codigo_nucleo"]; 
+                                         } else {
+                                            echo "none";
+                                         }
+                                        ?>' selected hidden><?php
+                                         if ($_GET["codigo_nucleo"]) {
+                                            echo $_GET["codigo_nucleo"]; 
+                                         } else {
+                                            echo "Seleccione una opcion";
+                                         }
+                                        ?>
                                         <option value="none">Ninguno</option>
                                         <?php
                                         require('select_a.php');
