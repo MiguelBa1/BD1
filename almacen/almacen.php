@@ -43,7 +43,7 @@
             <a class="nav-link" href="../busquedas/busquedas.php">Búsquedas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../busquedas/busquedas.php">Consultas</a>
+            <a class="nav-link" href="../consultas/consultas.php">Consultas</a>
         </li>
     </ul>
 
