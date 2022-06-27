@@ -23,4 +23,5 @@ try {
 	echo "Ha ocurrido un error al crear la persona";
 	echo $th;
 }
+}
 ?>
