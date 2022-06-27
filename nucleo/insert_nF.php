@@ -20,7 +20,7 @@ try {
 		header("Location: nucleo.php");
 	} 
 } catch (\Throwable $th) {
-	echo "Ha ocurrido un error al crear la persona";
+	echo "Ha ocurrido un error al crear el nucelo";
 	echo $th;
 }
 }
