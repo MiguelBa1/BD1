@@ -65,26 +65,21 @@
                                 <div name="taskOption" class="form-group">
                                     <label for="codigo_nucleo">Código del núcleo familiar</label>
                                     <select name="codigo_nucleo" id="codigo-nucleo" class="form-control">
-                                        <option value='<?
-                                         if ($_GET["codigo_nucleo"]) {
-                                            echo $_GET["codigo_nucleo"]; 
-                                         } else {
-                                            echo "none";
-                                         }
-                                        ?>' selected hidden><?php
-                                         if ($_GET["codigo_nucleo"]) {
-                                            echo $_GET["codigo_nucleo"]; 
-                                         } else {
-                                            echo "Seleccione una opcion";
-                                         }
-                                        ?></option>
-                                        <option value="none">Ninguno</option>
+                                        <option value="" <?php
+                                                            if (!$_GET["codigo_nucleo"]) {
+                                                                echo "selected";
+                                                            }
+                                                            ?>>Seleccione una opcion</option>
                                         <?php
                                         require('select_n.php');
                                         if ($resultN) {
                                             foreach ($resultN as $fila) {
                                         ?>
-                                                <option value=<?= $fila['codigo']; ?>><?= $fila['codigo']; ?></option>
+                                                <option value=<?= $fila['codigo']; ?> <?php
+                                                                                        if ($_GET["codigo_nucleo"] === $fila["codigo"]) {
+                                                                                            echo "selected";
+                                                                                        }
+                                                                                        ?>><?= $fila['codigo']; ?></option>
                                         <?php
                                             }
                                         }
@@ -92,28 +87,23 @@
                                     </select>
                                 </div>
                                 <div name="taskOption" class="form-group">
-                                    <label for="codigo_almacen">Número de almacén</label>
-                                    <select name="codigo_almacen" id="codigo-almacen" class="form-control">
-                                        <option value='<?
-                                         if ($_GET["codigo_nucleo"]) {
-                                            echo $_GET["codigo_nucleo"]; 
-                                         } else {
-                                            echo "none";
-                                         }
-                                        ?>' selected hidden><?php
-                                         if ($_GET["codigo_nucleo"]) {
-                                            echo $_GET["codigo_nucleo"]; 
-                                         } else {
-                                            echo "Seleccione una opcion";
-                                         }
-                                        ?>
-                                        <option value="none">Ninguno</option>
+                                    <label for="lugar_almacenamiento">Número de almacén</label>
+                                    <select name="lugar_almacenamiento" id="codigo-almacen" class="form-control">
+                                        <option value="" <?php
+                                                            if (!$_GET["lugar_almacenamiento"]) {
+                                                                echo "selected";
+                                                            }
+                                                            ?>>Seleccione una opcion</option>
                                         <?php
                                         require('select_a.php');
                                         if ($resultE) {
                                             foreach ($resultE as $fila) {
                                         ?>
-                                                <option value=<?= $fila['numero_almacen']; ?>><?= $fila['numero_almacen']; ?></option>
+                                                <option value=<?= $fila['numero_almacen']; ?> <?php
+                                                                                                if ($_GET["lugar_almacenamiento"] === $fila["numero_almacen"]) {
+                                                                                                    echo "selected";
+                                                                                                }
+                                                                                                ?>><?= $fila['numero_almacen']; ?></option>
                                         <?php
                                             }
                                         }
@@ -122,7 +112,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="fecha_de_compra">Fecha de compra<span style="color: red;">*</span></label>
-                                    <input type="date" max="<?= (new DateTime("today"))->format('Y-m-d')?>" name="fecha_de_compra" id="fecha_de_compra" value='<?= $_GET["fecha_de_compra"]; ?>' class="form-control" required>
+                                    <input type="date" max="<?= (new DateTime("today"))->format('Y-m-d') ?>" name="fecha_de_compra" id="fecha_de_compra" value='<?= $_GET["fecha_de_compra"]; ?>' class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="valor_total">Valor total<span style="color: red;">*</span></label>
@@ -157,8 +147,7 @@
                                 <div name="taskOption" class="form-group">
                                     <label for="codigo-nucleo">Código del núcleo familiar</label>
                                     <select name="codigo_nucleo" id="codigo-nucleo" class="form-control">
-                                        <option value="none" selected hidden>Selecciona una opcion</option>
-                                        <option value="none">Ninguno</option>
+                                        <option value="" selected>Selecciona una opcion</option>
                                         <?php
                                         require('select_n.php');
                                         if ($resultN) {
@@ -173,9 +162,8 @@
                                 </div>
                                 <div name="taskOption" class="form-group">
                                     <label for="codigo-almacen">Número de almacén</label>
-                                    <select name="codigo_almacen" id="codigo-almacen" class="form-control">
-                                        <option value="none" selected hidden>Selecciona una opcion</option>
-                                        <option value="none">Ninguno</option>
+                                    <select name="lugar_almacenamiento" id="codigo-almacen" class="form-control">
+                                        <option value="" selected>Selecciona una opcion</option>
                                         <?php
                                         require('select_a.php');
                                         if ($resultE) {
@@ -190,11 +178,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="fecha_de_compra">Fecha de compra<span style="color: red;">*</span></label>
-                                    <input type="date" max="<?= (new DateTime("today"))->format('Y-m-d')?>" name="fecha_de_compra" id="fecha_de_compra"  class="form-control" required>
+                                    <input type="date" max="<?= (new DateTime("today"))->format('Y-m-d') ?>" name="fecha_de_compra" id="fecha_de_compra" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="valor_total">Valor total<span style="color: red;">*</span></label>
-                                    <input type="number" min="0" max="99999999999" name="valor_total"  id="valor_total" class="form-control" required>
+                                    <input type="number" min="0" max="99999999999" name="valor_total" id="valor_total" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Insertar">
@@ -246,7 +234,7 @@
                                             <input type="text" name="fecha_de_compra" value='<?= $fila['fecha_de_compra']; ?>' hidden>
                                             <input type="text" name="valor_total" value='<?= $fila['valor_total']; ?>' hidden>
                                             <input type="text" name="codigo_nucleo" value='<?= $fila['codigo_nucleo_comprador']; ?>' hidden>
-                                            <input type="text" name="codigo_almacen" value='<?= $fila['lugar_almacenamiento']; ?>' hidden>
+                                            <input type="text" name="lugar_almacenamiento" value='<?= $fila['lugar_almacenamiento']; ?>' hidden>
 
                                             <button class="btn btn-primary" title="editar" type="submit"><i class="far fa-edit"></i></button>
                                         </form>

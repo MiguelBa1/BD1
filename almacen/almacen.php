@@ -74,22 +74,27 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nucleo_administrador_edit">Núcleo administrador</label>
-                                    <select id="nucleo_administrador_edit" name="nucleo_administrador" class="form-control" value=<?= $_GET["nucleo_administrador"]; ?>>
-                                        <option value='<?= $_GET["nucleo_administrador"]; ?>' selected hidden><?= $_GET["nucleo_administrador"]; ?></option>
-                                        <option value="NULL">Ninguno</option>
+                                    <select id="nucleo_administrador_edit" name="nucleo_administrador" class="form-control">
+                                        <option value="" <?php
+                                                            if (!$_GET["nucleo_administrador"]) {
+                                                                echo "selected";
+                                                            }
+                                                            ?>>Seleccione una opcion</option>
                                         <?php
                                         require('consultar_nF.php');
                                         if ($resultP) {
                                             foreach ($resultP as $fila) {
                                         ?>
-                                                <option value=<?= $fila['codigo']; ?>><b>Código Núcleo:</b> <?= $fila['codigo']; ?><b> -
+                                                <option value=<?= $fila['codigo']; ?> <?php
+                                                                                        if ($_GET["nucleo_administrador"] === $fila["codigo"]) {
+                                                                                            echo "selected";
+                                                                                        }
+                                                                                        ?>><b>Código Núcleo:</b> <?= $fila['codigo']; ?><b> -
                                                         Celular: </b><?= $fila['numero_celular']; ?></option>
                                         <?php
                                             }
                                         }
-
                                         ?>
-
                                     </select>
                                 </div>
 
@@ -123,12 +128,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad_mercados_maxima">Cantidad máxima de mercados<span style="color: red;">*</span></label>
-                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima"  id="cantidad_mercados_maxima_edit" class="form-control" required>
+                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima" id="cantidad_mercados_maxima_edit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nucleo_administrador">Núcleo administrador</label>
                                     <select name="nucleo_administrador" class="form-control">
-                                        <option value="NULL">Ninguno</option>
+                                        <option value="">Seleccione una opcion</option>
                                         <?php
                                         require('consultar_nF.php');
                                         if ($resultP) {
@@ -195,7 +200,7 @@
                                             <input type="text" name="numero_almacen" value='<?= $fila['numero_almacen']; ?>' hidden>
                                             <input type="text" name="nombre" value='<?= $fila['nombre']; ?>' hidden>
                                             <input type="number" name="cantidad_mercados_maxima" value='<?= $fila['cantidad_mercados_maxima']; ?>' hidden>
-                                            <input type="text" name="nucleo_administrador" hidden value=<?= $fila['nucleo_administrador']?>>
+                                            <input type="text" name="nucleo_administrador" hidden value=<?= $fila['nucleo_administrador'] ?>>
 
                                             <button class="btn btn-primary" title="editar" type="submit"><i class="far fa-edit"></i></button>
                                         </form>

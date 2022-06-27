@@ -5,7 +5,7 @@ require('../configuraciones/conexion.php');
 
 $cedula = $_POST["numero_almacen"];
 $cantidad = $_POST["cantidad_mercados_maxima"];
-if($_POST["nucleo_administrador"] == 'NULL'){$nucleo = "NULL";}else{$nucleo = $_POST["nucleo_administrador"];}
+if($_POST["nucleo_administrador"] == ''){$nucleo = "NULL";}else{$nucleo = $_POST["nucleo_administrador"];}
 
 
 //query
@@ -31,7 +31,3 @@ if($result){
  }
  
 mysqli_close($conn);
-
-
-
-?>
