@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad_mercados_maxima">Cantidad máxima de mercados<span style="color: red;">*</span></label>
-                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima" value='<?= $_GET["cantidad_mercados_maxima"]; ?>' id="cantidad_mercados_maxima_edit" class="form-control" required>
+                                    <input type="number" min="1" max="99" name="cantidad_mercados_maxima"  id="cantidad_mercados_maxima_edit" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nucleo_administrador">Núcleo administrador</label>
