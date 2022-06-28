@@ -17,7 +17,7 @@ CREATE TABLE almacen (
 	nombre VARCHAR(20) NOT NULL,
 	cantidad_mercados_maxima INT(2) NOT NULL,
 	nucleo_administrador INT(2) UNIQUE,
-	FOREIGN KEY (nucleo_administrador) REFERENCES nucleo_familiar(codigo),
+	FOREIGN KEY (nucleo_administrador) REFERENCES nucleo_familiar(codigo) ON DELETE CASCADE, 
   CHECK (cantidad_mercados_maxima>0)
 );
 
@@ -28,8 +28,8 @@ CREATE TABLE mercado (
 	codigo_nucleo_comprador INT(2),
 	lugar_almacenamiento INT(2),
 	CHECK(fecha_de_compra < CURRENT_DATE AND valor_total >= 0),
-	FOREIGN KEY (codigo_nucleo_comprador) REFERENCES nucleo_familiar(codigo),
-	FOREIGN KEY (lugar_almacenamiento) REFERENCES almacen(numero_almacen)
+	FOREIGN KEY (codigo_nucleo_comprador) REFERENCES nucleo_familiar(codigo) ON DELETE CASCADE,
+	FOREIGN KEY (lugar_almacenamiento) REFERENCES almacen(numero_almacen) ON DELETE CASCADE
 );
 
 INSERT INTO nucleo_familiar VALUES(1, "30687657", 1000, NULL, NULL);
@@ -47,7 +47,7 @@ INSERT INTO mercado VALUES(3, DATE("2022-05-15"), 1200, 3, 2);
 
 INSERT INTO mercado VALUES(4, DATE("2022-04-13"), 1300, 1, 3);
 INSERT INTO mercado VALUES(5, DATE("2022-06-15"), 2000, 3, 1);
-INSERT INTO mercado VALUES(6, DATE("2022-06-28"), 150, 3, 1);
+INSERT INTO mercado VALUES(6, DATE("2022-06-26"), 150, 3, 1);
 
 SELECT codigo, valor_total
 FROM mercado m
