@@ -53,7 +53,7 @@
                             <input class="form-check-input" type="radio" name="consultas" id="consultas1"
                                 value="Primera" checked>
                             <label class="form-check-label" for="consultas1">
-                            Mostrar número y nombre de los almacenes que son administrados por algún núcleo familiar, la suma de los valores de sus mercados asociados es mayor a 1000, el número de sus mercados almacenados es mayor a 3 y su núcleo administrador no ha comprado mercados
+                            Mostrar número y nombre de los almacenes que son administrados por algún núcleo familiar, la suma de los valores de sus mercados asociados es mayor a 1000, el número de sus mercados almacenados es mayor o igual a 3 y su núcleo administrador no ha comprado mercados
                             </label>
                         </div>
                         <div class="form-check py-3">
