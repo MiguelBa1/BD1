@@ -1,0 +1,59 @@
+FUNCTION_BLOCK horno
+
+
+VAR_INPUT				
+        humedad_dentro_horno : REAL; RANGE := (0 .. 10);
+        intensidad_marron_postre : REAL; RANGE := (0 .. 10);
+        volumen_postre : REAL; RANGE := (0 .. 10);
+END_VAR
+
+VAR_OUTPUT				
+        temperatura : REAL; RANGE := (165 .. 225);
+END_VAR
+
+
+
+FUZZIFY humedad_dentro_horno
+        TERM baja := trape 0 0 0.5 4.5; 
+        TERM media := trape 0.5 4.5 5.5 9.5;
+        TERM alta := trape 5.5 9.5 10 10;
+END_FUZZIFY
+
+FUZZIFY intensidad_marron_postre
+        TERM baja := trian 0 0 8;
+        TERM alta := trian 4 10 10;
+END_FUZZIFY
+
+FUZZIFY volumen_postre
+        TERM pequenio := trape 0 0 1 4;
+        TERM mediano := trape 1 4 6 9;
+        TERM grande := trape 6 9 10 10;
+
+END_FUZZIFY
+
+
+DEFUZZIFY temperatura
+        TERM baja := trape 165 165 165 180;
+        TERM media := trape 170 180 200 210;
+        TERM alta := trian 200 225 250;
+
+        METHOD : COG;
+        DEFAULT := 180;
+END_DEFUZZIFY
+
+
+
+RULEBLOCK No1
+        AND : MIN;
+        ACT : MIN;
+        ACCU : MAX;
+
+        RULE 1 : IF (humedad_dentro_horno IS baja) AND (intensidad_marron_postre IS alta) AND (volumen_postre IS pequenio) THEN temperatura IS alta;
+        RULE 2 : IF (humedad_dentro_horno IS baja) AND (intensidad_marron_postre IS alta) AND (volumen_postre IS mediano) THEN temperatura IS media;
+        RULE 3 : IF (humedad_dentro_horno IS alta) AND (intensidad_marron_postre IS baja) AND (volumen_postre IS mediano) THEN temperatura IS alta;
+        RULE 4 : IF (humedad_dentro_horno IS alta) AND (intensidad_marron_postre IS baja) AND (volumen_postre IS pequenio) THEN temperatura IS baja;
+        RULE 5 : IF (humedad_dentro_horno IS media) AND (intensidad_marron_postre IS baja) AND (volumen_postre IS grande) THEN temperatura IS media;
+        RULE 6 : IF (humedad_dentro_horno IS media) AND (intensidad_marron_postre IS alta) AND (volumen_postre IS mediano) THEN temperatura IS alta;        
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
